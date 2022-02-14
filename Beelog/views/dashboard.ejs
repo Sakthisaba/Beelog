@@ -1,0 +1,96 @@
+<html>
+ <head>
+    <meta charset="UTF-8">
+  <meta name="description" content="Blog using nodejs">
+  <meta name="keywords" content="Node js,Moongose db">
+  <meta name="author" content="Sakthi saba">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+     <style>
+        body{
+            background-color: rgb(228, 228, 228);
+           font-family: 'Poppins',sans-serif;
+        }
+
+       h2{
+           margin-top: 10px;
+       }
+
+
+       
+       .mar{
+           margin-right: 17px;
+       }
+     </style>
+ </head>
+ <body>
+     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Beelog</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+     <li class="nav-item">
+        <a class="nav-link" href="/all-blog">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add-blog">New Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+         
+    <div class="container mt-3"> 
+      
+        <h1 class="text-primary text-center ">Dashboard</h1>
+        <div class= "d-flex mt-5 row p-4 mx-auto shadow p-3 mb-5 bg-white rounded" >
+            
+     <h1 class=" col-6 flex-column  text-black text-bold" style="font-size: 8vw;"> Hello <%=name%>!</h1><br>
+   <h1 class=" col-6 d-block " style="font-size: 8vw;" >Total Blogs:<%=totalBlog%></h1>
+    </div>
+    <h3 class="mt-5" >Recent Blogs</h3>
+   
+     <% if(blogs.length>0){ %>
+        
+        <% blogs.forEach(blog=>{ %>
+            <form method="post" class=" p-3 m-2 bg-primary" action="/delete" >
+            <div class="m-3 p-3  text-white rounded div" id="d1">
+             <div><h2 ><%=blog.title%> </h2> <button type="submit" class="float-end " style="background: none;border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FE4C59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+             </div><p ><%=blog.body%></p> 
+             <input type="hidden" value="<%=blog._id%>" name="blogid">
+             <p class=" p-1 float-start text-black-50">by <%=blog.author%></div>
+            </form>
+            <% }) }  %>
+            
+            
+    </div>
+    </div>
+    </div>
+
+        
+ </body>   
+</html>
